@@ -1,15 +1,15 @@
 # Name: Jesse Huss
 # ID: 001209444
 # Project: Assignment 2 Q3
-from nltk.corpus import reuters
+from nltk.corpus import brown
 from nltk import bigrams, trigrams
-from collections import Counter, defaultdict
+from collections import defaultdict
 import random
 
 input(
     "Welcome !\n"
     "This program uses two different language models (bigram and trigram)\n" +
-    "to generate random sentences based on starting word(s) provided by you and using the reuters corpus.\n" +
+    "to generate random sentences based on starting word(s) provided by you and using the brown corpus.\n" +
     "We use a random probability threshold to ensure a good randomness and probability of creating a sentence.\n"+
     "Press enter to continue...\n\n")
 
@@ -27,7 +27,7 @@ while not valid_input:
 
 if model_type.lower() == 'bigram':
     # COUNT FREQUENCY OF OCCURRENCE
-    for sent in reuters.sents():
+    for sent in brown.sents():
         for word1, word2 in bigrams(sent, pad_right=True, pad_left=True):
             model[word1][word2] += 1
 
@@ -73,7 +73,7 @@ if model_type.lower() == 'bigram':
 
 elif model_type.lower() == 'trigram':
     # COUNT FREQUENCY OF OCCURRENCE
-    for sent in reuters.sents():
+    for sent in brown.sents():
         for word1, word2, word3 in trigrams(sent, pad_right=True, pad_left=True):
             model[(word1, word2)][word3] += 1
 
