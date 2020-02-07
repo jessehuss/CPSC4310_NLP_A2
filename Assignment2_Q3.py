@@ -6,6 +6,13 @@ from nltk import bigrams, trigrams
 from collections import Counter, defaultdict
 import random
 
+input(
+    "Welcome !\n"
+    "This program uses two different language models (bigram and trigram)\n" +
+    "to generate random sentences based on starting word(s) provided by you and using the reuters corpus.\n" +
+    "We use a random probability threshold to ensure a good randomness and probability of creating a sentence.\n"+
+    "Press enter to continue...\n\n")
+
 # MODEL PLACEHOLDER
 model = defaultdict(lambda: defaultdict(lambda: 0))
 
@@ -16,7 +23,7 @@ while not valid_input:
     model_type = input("Please specify which model you would like to use ('bigram' or 'trigram'):")
     if model_type.lower() == 'bigram' or model_type.lower() == 'trigram':
         valid_input = True
-        print("GENERATING MODEL...")
+        print("\nGENERATING MODEL...\n")
 
 if model_type.lower() == 'bigram':
     # COUNT FREQUENCY OF OCCURRENCE
@@ -38,7 +45,7 @@ if model_type.lower() == 'bigram':
         user_selection = input("Please specify your starting word - Type a single word:")
         if len(user_selection.split()) == 1:
             valid_input = True
-            print("GENERATING RANDOM SENTENCE...")
+            print("\nGENERATING RANDOM SENTENCE...\n")
 
     
     # STARTING WORDS
@@ -84,7 +91,7 @@ elif model_type.lower() == 'trigram':
         user_selection = input("Please specify your starting words - Type two words separated by a space:")
         if len(user_selection.split()) == 2:
             valid_input = True
-            print("GENERATING RANDOM SENTENCE...")
+            print("\nGENERATING RANDOM SENTENCE...\n")
 
     # STARTING WORDS
     generated_sentence = [user_selection.split()[0], user_selection.split()[1]]
